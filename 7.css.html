@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{padding: 0; margin: 0;}
+        .box{
+            height: 500px;
+        }
+        .box div{
+            height: 200px;
+        }
+        .left {
+            width: 120px;
+            float: left;
+            background-color: #f40;
+        }
+        .right {
+            float: right;
+            width: 120px;
+            background-color: #583;
+        }
+        .center {
+            width: calc(100% - 240px);
+            margin-left: 120px;
+            background-color: #879;
+        }
+        .img img{
+            width: 20px;
+
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="box">
+        <div class="left"></div>
+        <div class="center"></div>
+        <div class="right"></div>
+    </div> -->
+    <div class="img">
+        <img src="./image/bg.png" alt="">
+    </div>
+    <script src="./jquery-1.9.1.min.js"></script>
+    <script>
+        // console.log($(".img img").naturalWidth);
+        // console.log($(".img img").naturalHeight);
+        // var Src = $(".img img").attr("src");
+        // var imgae = new Image();
+        // image.src = Src;
+        // image.onload = function() {
+        //     //callback(image.width, image.height);
+        //     console.log(image.width, image.height)
+        // }
+        // console.log($(".img img").width());
+        // console.log($(".img img").height());
+        // console.log(document.getElementsByTagName("img")[0].naturalWidth);
+        // console.log(document.getElementsByTagName("img")[0].naturalHeight);
+        var Img = new Image();
+        var Src = $(".img img").attr("src");
+        Img.src = Src;
+        console.log(Img.width,Img.height);
+    </script>
+</body>
+</html>

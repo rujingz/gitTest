@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function dynamicDisplay() {
+            //监听元素是否加载完成
+            var loadImage = function (url, imgEle) {
+                var img = new Image()
+                img.src = url
+                return new Promise(function (resolve) {
+                    img.addEventListener('load', function () {
+                        imgEle.src = img.src;
+                        resolve(true)
+                    })
+                })
+            }
+            var promises = [];
+            //.cover是所有需要重新赋值的元素
+            $('.cover').each(function () {
+                promises.push(loadImage($(this).attr('data-src'), this))
+            })
+            //所有图片都加载完成后执行
+            Promise.all(promises).then(function (result) {
+                //这里写赋给图片的样式
+            });
+        }
+    </script>
+</body>
+
+</html>

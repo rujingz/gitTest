@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./jquery-1.9.1.min.js"></script>
+    <script src="./My97DatePicker/WdatePicker.js"></script>
+    <!-- <input type="text" class="Wdate" id="d4331" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'d4332\',{M:-3,d:-2})||$dp.$DV(\'2020-4-3\',{M:-3,d:-2})}'})"/>
+    <input type="text" class="Wdate" id="d4332" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'d4331\',{M:3,d:2});}',maxDate:'2020-4-3'})"/> -->
+    <span>开始日期</span><input name="startTime" id="startTime" onfocus="startTimeFocus();"  class="input-text Wdate" style="width:200px" >  
+    <span>结束日期</span><input name="endTime" id="endTime" onfocus="endTimeFocus();" class="input-text Wdate"style="width:200px" >
+    <script>
+        function startTimeFocus() {
+            return WdatePicker({
+                skin : 'whyGreen',
+                // minDate:'#F{$dp.$D(\'endTime\',{d:-30})||\'%y-%M-%d {%H}:{%m+1}\'}',
+                // maxDate : '#F{$dp.$D(\'endTime\')||\'%y-%M-%d\'}',
+                doubleCalendar:true,
+                // dateFmt:'yyyy-MM-dd HH:mm:ss'
+                dateFmt: 'yyyy-MM-dd HH:mm:00',
+                minDate: '#F{$dp.$D(\'endTime\',{m:-SetWdatePicker30D()})||\'%y-%M-%d {%H}:{%m+1}\'}',
+                maxDate: '#F{$dp.$D(\'endTime\',{H:-0})}'
+            });
+        }
+        
+        function endTimeFocus() {
+            return WdatePicker({
+                skin : 'whyGreen',
+                // minDate:'#F{$dp.$D(\'startTime\')||\'%y-%M-%d {%H}:{%m+1}\'}',
+                // maxDate : '#F{$dp.$D(\'startTime\',{d:30})||\'%y-%M-%d\'}',
+                doubleCalendar:true, 
+                //dateFmt:'yyyy-MM-dd HH:mm:ss'
+                dateFmt: 'yyyy-MM-dd HH:mm:00',
+                minDate: '#F{$dp.$D(\'startTime\',{H:+0})||\'%y-%M-%d {%H}:{%m+1}\'}',
+                maxDate: '#F{$dp.$D(\'startTime\',{d:+30})}'
+            });
+        }
+        //特价时间相差最多只能30天处理
+    function SetWdatePicker30D() {
+        var subDate = new Date($("#endTime").val());
+        var date = new Date();
+        var ts = (subDate) - (date);//计算剩余的毫秒数
+        var dd = 0;
+        if (ts > 0) {
+            var dd = parseInt(ts / 1000 / 60, 10);//计算剩余的分钟
+        }
+        if (dd > 30 * 24 * 60) {
+            dd = 30 * 24 * 60;
+        }
+        return dd;
+    }
+    // Variable.Begin_time.click(function () {
+    //     WdatePicker({
+    //         isShowClear: true,
+    //         readOnly: true,
+    //         dateFmt: 'yyyy-MM-dd HH:mm:00',
+    //         minDate: '#F{$dp.$D(\'end_time\',{m:-SetWdatePicker30D()})||\'%y-%M-%d {%H}:{%m+1}\'}',
+    //         maxDate: '#F{$dp.$D(\'end_time\',{H:-0})}'
+    //     })
+    // })
+    // //结束时间事件
+    // Variable.End_time.click(function () {
+    //     WdatePicker({
+    //         isShowClear: true,
+    //         readOnly: true,
+    //         dateFmt: 'yyyy-MM-dd HH:mm:00',
+    //         minDate: '#F{$dp.$D(\'begin_time\',{H:+0})||\'%y-%M-%d {%H}:{%m+1}\'}',
+    //         maxDate: '#F{$dp.$D(\'begin_time\',{d:+30})}'
+    //     })
+    // })
+    </script>
+</body>
+</html>
