@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * [debounce 防抖函数]
+         * @param  {Function} fn    [description]
+         * @param  {[type]}   delay [description]
+         * @return {[type]}         [description]
+         */
+        function debounce(fn, delay){
+            // 维护一个 timer
+            let timer = null;
+            
+            return function() {
+                // 获取函数的作用域和变量
+                let context = this;
+                let args = arguments;
+                
+                clearTimeout(timer);
+                timer = setTimeout(function(){
+                    fn.apply(context, args);
+                }, delay)
+            }
+        }
+        function foo(){
+            console.log("trigger");
+        }
+        window.addEventListener('resize',debounce(foo,1000));
+        /**
+         * [throttle 节流函数]
+         * @param  {Function} fn    [description]
+         * @param  {[type]}   delay [description]
+         * @return {[type]}         [description]
+         */
+        //时间戳实现
+        var throttle = function(func,delay){
+            var prev = Date.now();
+            return function(){
+                var context = this;
+                var args = arguments;
+                var now = Date.now();
+                if(now-prev>=delay){
+                    func.apply(context,args);
+                    prev = Date.now();
+                }
+            }
+        }
+        //定时器实现
+        var throttle2 = function(func,delay){
+            var timer = null;
+            return function(){
+                var context = this;
+                var args = arguments;
+                if(!timer){
+                    timer = setTimeout(function(){
+                        func.apply(context,args);
+                        timer = null;
+                    },delay);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

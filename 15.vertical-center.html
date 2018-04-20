@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{padding: 0; margin: 0;}
+        .box{
+            width: 500px;
+            height: 300px;
+            border: 1px solid #f40;
+            margin: 20px auto;
+        }
+        .center{
+            width: 300px;
+            border: 1px solid #586;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .box1{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .box2{
+            position: relative;
+        }
+        .center2{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+        }
+        .box3{
+            display:table-cell;
+            vertical-alian:middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1">
+        <div class="center center1">
+            测试内容部分
+            不知道大小
+            响应式
+        </div>
+    </div>
+    <div class="box box2">
+        <div class="center center2">
+            测试内容部分
+            不知道大小
+            响应式
+        </div>
+    </div>
+    <div class="box box3">
+        <div class="center center3">
+            测试内容部分
+            不知道大小
+            响应式
+        </div>
+    </div>
+</body>
+</html>

@@ -21,5 +21,25 @@
     <div>
         <div class="arrow1"></div>
     </div>
+    <script>
+        console.log(a);//undefined
+        var a = "10";
+        console.log(a);//10
+        function A(a){
+            console.log(a);//30
+            var a = "20";
+            console.log(a);//20
+            arguments[0]  = "40";
+            console.log(a);//40
+            for(var a=1;a<5;a++){
+                setTimeout(function(){
+                console.log(new Date+a); //data+5
+                },1000)
+            }
+            console.log(new Date+a);// data+40
+        }
+        A("30");
+        console.log(a); //10
+    </script>
 </body>
 </html>

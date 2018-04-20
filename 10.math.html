@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [1, 2, 8, 4, 22, 6];
+        const calculateMedian = (arr) => {
+         // 1. 排序
+         arr.sort((a, b) => a - b);
+        console.log(arr);
+        const half = Math.floor(arr.length / 2);
+
+        // 2. 按照中位数定义计算
+         // 奇数长度则中间值，偶数长度则中间两个数的平均值
+        return arr.length % 2 !== 0 ?
+            arr[half] :
+            (arr[half - 1] + arr[half]) / 2.0;
+        }
+        console.log(calculateMedian(arr));
+    </script>
+</body>
+</html>
